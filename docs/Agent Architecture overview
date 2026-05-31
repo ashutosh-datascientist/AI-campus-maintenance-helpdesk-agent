@@ -1,0 +1,168 @@
+# Agent Architecture
+
+## Overview
+
+The Smart Campus Maintenance & Helpdesk Agent is a multi-agent AI system designed to automate complaint handling, technician assignment, ticket tracking, and campus support services.
+
+---
+
+# Agent Workflow
+
+User
+↓
+Helpdesk Agent
+↓
+Classification Agent
+↓
+Priority Agent
+↓
+Assignment Agent
+↓
+Monitoring Agent
+↓
+Database & Dashboard
+
+---
+
+## Agent 1: Helpdesk Agent
+
+### Purpose
+
+Acts as the first point of contact for students, faculty, and staff.
+
+### Responsibilities
+
+* Receive complaints
+* Create tickets
+* Check ticket status
+* Answer common support questions
+* Route requests to other agents
+
+### Example
+
+Input:
+
+"Projector in Room 305 is not working."
+
+Output:
+
+Ticket created successfully.
+
+---
+
+## Agent 2: Classification Agent
+
+### Purpose
+
+Identifies the issue category and responsible department.
+
+### Responsibilities
+
+* Analyze complaint
+* Classify issue type
+* Assign department
+
+### Example
+
+Issue:
+
+"WiFi is not working in Lab 2"
+
+Department:
+
+Network Team
+
+---
+
+## Agent 3: Priority Agent
+
+### Purpose
+
+Determines urgency of the complaint.
+
+### Responsibilities
+
+* Assess business impact
+* Assign priority level
+
+### Priority Levels
+
+* Low
+* Medium
+* High
+* Critical
+
+### Example
+
+Issue:
+
+"Entire examination hall has no electricity"
+
+Priority:
+
+Critical
+
+---
+
+## Agent 4: Assignment Agent
+
+### Purpose
+
+Assigns the most suitable technician.
+
+### Responsibilities
+
+* Check technician skills
+* Check workload
+* Assign ticket
+
+### Example
+
+Issue:
+
+Projector Failure
+
+Assigned To:
+
+IT Technician
+
+---
+
+## Agent 5: Monitoring Agent
+
+### Purpose
+
+Tracks ticket progress and performs escalations.
+
+### Responsibilities
+
+* Monitor open tickets
+* Send reminders
+* Escalate overdue tickets
+* Update ticket history
+
+### Example
+
+Open for 48 hours:
+
+Escalate to supervisor
+
+---
+
+# Benefits
+
+* Faster issue resolution
+* Reduced manual effort
+* Improved technician utilization
+* Better ticket visibility
+* Enhanced campus support experience
+
+---
+
+# Future Enhancements
+
+* Voice-based complaint registration
+* WhatsApp integration
+* Predictive maintenance
+* Real-time notifications
+* Mobile application support
