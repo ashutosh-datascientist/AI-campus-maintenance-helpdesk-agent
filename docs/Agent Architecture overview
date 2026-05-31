@@ -14,8 +14,6 @@ Helpdesk Agent
 ↓
 Classification Agent
 ↓
-Priority Agent
-↓
 Assignment Agent
 ↓
 Monitoring Agent
@@ -74,37 +72,8 @@ Network Team
 
 ---
 
-## Agent 3: Priority Agent
 
-### Purpose
-
-Determines urgency of the complaint.
-
-### Responsibilities
-
-* Assess business impact
-* Assign priority level
-
-### Priority Levels
-
-* Low
-* Medium
-* High
-* Critical
-
-### Example
-
-Issue:
-
-"Entire examination hall has no electricity"
-
-Priority:
-
-Critical
-
----
-
-## Agent 4: Assignment Agent
+## Agent 3: Assignment Agent
 
 ### Purpose
 
@@ -128,7 +97,7 @@ IT Technician
 
 ---
 
-## Agent 5: Monitoring Agent
+## Agent 4: Monitoring Agent
 
 ### Purpose
 
