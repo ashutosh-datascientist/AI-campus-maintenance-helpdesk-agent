@@ -1,7 +1,130 @@
+# LangGraph Workflow Design
+
+## Overview
+
+The AI Campus Maintenance Helpdesk Agent uses a multi-agent workflow to automate complaint handling, technician assignment, ticket monitoring, and support services.
+
+---
+
+# Workflow
+
+User
+↓
 Helpdesk Agent
-      ↓
+↓
 Classification Agent
-      ↓
+↓
 Assignment Agent
-      ↓
+↓
+Database
+↓
 Monitoring Agent
+↓
+Dashboard
+
+---
+
+## Step 1: Helpdesk Agent
+
+### Responsibilities
+
+* Receive user request
+* Identify user intent
+* Create maintenance request
+* Answer FAQs
+* Check ticket status
+
+### Example
+
+Input:
+
+"Projector in Room 305 is not working."
+
+Output:
+
+Maintenance request created.
+
+---
+
+## Step 2: Classification Agent
+
+### Responsibilities
+
+* Identify issue category
+* Identify responsible department
+* Assign priority using predefined business rules
+
+### Example
+
+Issue:
+
+"WiFi is not working in Lab 2"
+
+Department:
+
+Network Team
+
+Priority:
+
+High
+
+---
+
+## Step 3: Assignment Agent
+
+### Responsibilities
+
+* Check technician skill
+* Check technician workload
+* Assign technician
+
+### Example
+
+Department:
+
+IT Support
+
+Assigned Technician:
+
+Karan
+
+---
+
+## Step 4: Database
+
+Stores:
+
+* Users
+* Tickets
+* Technicians
+* Departments
+* Ticket Updates
+
+---
+
+## Step 5: Monitoring Agent
+
+### Responsibilities
+
+* Monitor ticket status
+* Track unresolved issues
+* Escalate overdue tickets
+* Update ticket history
+
+### Example
+
+Ticket Open > 48 Hours
+
+Action:
+
+Escalate to Supervisor
+
+---
+
+# Expected Outcome
+
+* Faster issue resolution
+* Reduced manual work
+* Better ticket tracking
+* Efficient technician allocation
+* Improved campus support experience
