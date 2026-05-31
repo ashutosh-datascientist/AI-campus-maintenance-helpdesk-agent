@@ -1,9 +1,67 @@
-department_id,department_name
-1,Technology Services
-2,Electrical Maintenance
-3,Plumbing Maintenance
-4,Civil Maintenance
-5,Laboratory Equipment Support
-6,Air Conditioning & Ventilation Services
-7,Security & Surveillance
-8,Housekeeping Services
+-- =====================================
+-- AI Campus Maintenance Helpdesk Agent
+-- Database Schema
+-- =====================================
+
+-- USERS TABLE
+
+CREATE TABLE users (
+user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+email TEXT UNIQUE NOT NULL,
+role TEXT CHECK(role IN ('Student','Staff')) NOT NULL
+);
+
+-- DEPARTMENTS TABLE
+
+CREATE TABLE departments (
+department_id INTEGER PRIMARY KEY AUTOINCREMENT,
+department_name TEXT UNIQUE NOT NULL
+);
+
+-- TECHNICIANS TABLE
+
+CREATE TABLE technicians (
+technician_id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+department TEXT NOT NULL,
+workload INTEGER DEFAULT 0 CHECK(workload BETWEEN 0 AND 9)
+);
+
+-- TICKETS TABLE
+
+CREATE TABLE tickets (
+ticket_id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+```
+user_name TEXT NOT NULL,
+user_role TEXT NOT NULL,
+
+issue_description TEXT NOT NULL,
+
+building TEXT NOT NULL,
+location TEXT NOT NULL,
+
+department TEXT,
+assigned_technician TEXT,
+
+status TEXT DEFAULT 'Open',
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+```
+
+);
+
+-- TICKET UPDATES TABLE
+
+CREATE TABLE ticket_updates (
+update_id INTEGER PRIMARY KEY AUTOINCREMENT,
+ticket_id INTEGER NOT NULL,
+update_message TEXT NOT NULL,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+```
+FOREIGN KEY (ticket_id) REFERENCES tickets(ticket_id)
+```
+
+);
