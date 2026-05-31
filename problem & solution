@@ -1,8 +1,8 @@
 ## Problem Statement
 
-Educational institutions often face difficulties in managing campus infrastructure issues such as WiFi outages, projector failures, electrical faults, 
+Educational institutions often face difficulties in managing campus infrastructure issues such as WiFi outages, electrical faults, 
 water leakages, and equipment breakdowns. These issues are commonly reported through phone calls, whatsapp groups or manual registers, resulting in delayed 
-response times, inefficient ticket tracking, improper technician assignment, and limited visibility into maintenance operations.
+response times, lack of centralized complaint management
 
 To address these challenges, there is a need for an intelligent and automated solution that can streamline complaint management, 
 improve issue resolution efficiency, and enhance the overall campus support experience.
@@ -37,3 +37,5 @@ Build an Agentic AI-powered system that:
 - [ ] Frontend Development
 - [ ] Backend Development
 - [ ] Deployment
+- [ ] Testing
+- [ ] Production
