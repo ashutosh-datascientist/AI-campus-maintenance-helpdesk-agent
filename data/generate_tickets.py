@@ -6,22 +6,22 @@
 import pandas as pd
 import random
 
-# -----------------------------------------------------
-# Sample Users
-# (Later we'll read from users.csv)
-# -----------------------------------------------------
+# =====================================================
+# READ USERS DATASET
+# =====================================================
 
-users = [
-    ("Rahul Patil", "Student"),
-    ("Priya Sharma", "Student"),
-    ("Aarav Deshmukh", "Student"),
-    ("Anita Kulkarni", "Staff"),
-    ("Vikas More", "Staff")
-]
+users_df = pd.read_csv("users.csv")
 
-# -----------------------------------------------------
-# Ticket Status
-# -----------------------------------------------------
+users = list(
+    zip(
+        users_df["name"],
+        users_df["role"]
+    )
+)
+
+# =====================================================
+# TICKET STATUS
+# =====================================================
 
 statuses = [
     "Open",
@@ -29,72 +29,95 @@ statuses = [
     "Resolved"
 ]
 
-# -----------------------------------------------------
-# Sample Complaints
-# -----------------------------------------------------
+# =====================================================
+# ISSUE TEMPLATES
+# =====================================================
 
 issues = [
 
-    ("WiFi connectivity issue in Computer Science Lab 204",
-     "B Building",
-     "Computer Science Lab 204",
-     "Technology Services"),
+# Technology Services
 
-    ("Projector not functioning in Civil Engineering Classroom 201",
-     "A Building",
-     "Civil Engineering Classroom 201",
-     "Technology Services"),
+("WiFi connectivity issue in Computer Science Lab 204","B Building","Computer Science Lab 204","Technology Services"),
+("Internet outage in Programming Lab 101","B Building","Programming Lab 101","Technology Services"),
+("Projector not functioning in Civil Engineering Classroom 201","A Building","Civil Engineering Classroom 201","Technology Services"),
+("Smart board display malfunction in MBA Classroom 302","C Building","MBA Classroom 302","Technology Services"),
+("Printer not responding in Administration Office","Main Building","Administration Office","Technology Services"),
+("Computer not starting in Biotechnology Laboratory","E Building","Biotechnology Laboratory","Technology Services"),
+("Network connectivity issue in Faculty Room","Main Building","Faculty Room","Technology Services"),
+("LAN cable port not working in Computer Science Lab","B Building","Computer Science Lab","Technology Services"),
+("Online examination system inaccessible","Main Building","Examination Cell","Technology Services"),
+("Server connectivity issue reported","Main Building","Server Room","Technology Services"),
 
-    ("Broken washroom mirror in Girls Washroom Second Floor",
-     "C Building",
-     "Girls Washroom - Second Floor",
-     "Housekeeping Services"),
+# Electrical Maintenance
 
-    ("Fan not working in Mechanical Engineering Classroom 203",
-     "A Building",
-     "Mechanical Engineering Classroom 203",
-     "Electrical Maintenance"),
+("Fan not working in Mechanical Engineering Classroom 203","A Building","Mechanical Engineering Classroom 203","Electrical Maintenance"),
+("Tube light not functioning in Commerce Classroom 204","C Building","Commerce Classroom 204","Electrical Maintenance"),
+("Power outage in Geography Classroom","D Building","Geography Classroom","Electrical Maintenance"),
+("Electrical socket damaged in Library Reading Hall","Main Building","Library Reading Hall","Electrical Maintenance"),
+("Switch board malfunction near Auditorium Entrance","Main Building","Auditorium Entrance","Electrical Maintenance"),
+("Classroom lights flickering in English Department","D Building","English Department","Electrical Maintenance"),
+("Emergency light not operational","Main Building","Corridor","Electrical Maintenance"),
+("Ceiling fan making unusual noise","A Building","Civil Engineering Classroom","Electrical Maintenance"),
 
-    ("Water leakage near Boys Washroom Ground Floor",
-     "D Building",
-     "Boys Washroom - Ground Floor",
-     "Plumbing Maintenance"),
+# Plumbing Maintenance
 
-    ("Broken classroom chair in Law Classroom 205",
-     "D Building",
-     "Law Classroom 205",
-     "Civil Maintenance"),
+("Water leakage near Boys Washroom Ground Floor","D Building","Boys Washroom Ground Floor","Plumbing Maintenance"),
+("Broken washroom commode in Girls Washroom","C Building","Girls Washroom","Plumbing Maintenance"),
+("Flush system not working","A Building","Boys Washroom","Plumbing Maintenance"),
+("Water tap damaged in Biotechnology Laboratory","E Building","Biotechnology Laboratory","Plumbing Maintenance"),
+("Wash basin leakage reported","Main Building","Administration Block","Plumbing Maintenance"),
 
-    ("Microscope malfunction in Biotechnology Laboratory",
-     "E Building",
-     "Biotechnology Laboratory",
-     "Laboratory Equipment Support"),
+# Civil Maintenance
 
-    ("AC not cooling in MBA Classroom 302",
-     "C Building",
-     "MBA Classroom 302",
-     "Air Conditioning & Ventilation Services"),
+("Broken classroom chair reported","A Building","Civil Engineering Classroom 202","Civil Maintenance"),
+("Broken classroom table reported","B Building","Computer Science Classroom 301","Civil Maintenance"),
+("Broken cupboard in faculty cabin","D Building","Faculty Cabin","Civil Maintenance"),
+("Window glass damaged","C Building","MBA Classroom 305","Civil Maintenance"),
+("Door lock damaged","Main Building","Administration Office","Civil Maintenance"),
 
-    ("CCTV camera not working near Main Gate",
-     "Main Building",
-     "Main Gate",
-     "Security & Surveillance"),
+# Laboratory Equipment Support
 
-    ("Washroom foul smell reported in Boys Washroom",
-     "B Building",
-     "Boys Washroom",
-     "Housekeeping Services")
+("Microscope malfunction in Biotechnology Laboratory","E Building","Biotechnology Laboratory","Laboratory Equipment Support"),
+("Pharmacy lab equipment not functioning","E Building","Pharmacy Laboratory","Laboratory Equipment Support"),
+("Lab workstation not operational","B Building","Computer Science Lab","Laboratory Equipment Support"),
+("Biotechnology analyzer error reported","E Building","Biotechnology Lab","Laboratory Equipment Support"),
+("Digital weighing machine failure","E Building","Pharmacy Laboratory","Laboratory Equipment Support"),
+
+# Air Conditioning & Ventilation Services
+
+("AC not cooling in MBA Classroom 302","C Building","MBA Classroom 302","Air Conditioning & Ventilation Services"),
+("AC water leakage reported","Main Building","Auditorium","Air Conditioning & Ventilation Services"),
+("Ventilation issue in Biotechnology Lab","E Building","Biotechnology Laboratory","Air Conditioning & Ventilation Services"),
+("Air circulation issue reported","Main Building","Library Reading Hall","Air Conditioning & Ventilation Services"),
+
+# Security & Surveillance
+
+("CCTV camera not working near Main Gate","Main Building","Main Gate","Security & Surveillance"),
+("Parking area surveillance issue reported","Main Building","Parking Area","Security & Surveillance"),
+("Security access system malfunction","Main Building","Administration Block","Security & Surveillance"),
+("Camera lens damaged","B Building","Computer Science Entrance","Security & Surveillance"),
+
+# Housekeeping Services
+
+("Washroom unclean in Boys Washroom","A Building","Boys Washroom","Housekeeping Services"),
+("Washroom foul smell reported","B Building","Girls Washroom","Housekeeping Services"),
+("Broken washroom mirror reported","C Building","Girls Washroom Second Floor","Housekeeping Services"),
+("Garbage accumulation near building entrance","D Building","Main Entrance","Housekeeping Services"),
+("Laboratory cleaning required","E Building","Biotechnology Laboratory","Housekeeping Services"),
+("Classroom cleaning required","A Building","Civil Engineering Classroom","Housekeeping Services"),
+("Dust accumulation in library","Main Building","Library Reading Hall","Housekeeping Services"),
+("Corridor cleaning required","B Building","Second Floor Corridor","Housekeeping Services")
 ]
 
-# -----------------------------------------------------
-# Store Tickets
-# -----------------------------------------------------
+# =====================================================
+# STORE TICKETS
+# =====================================================
 
 tickets = []
 
-# -----------------------------------------------------
-# Generate 2000 Tickets
-# -----------------------------------------------------
+# =====================================================
+# GENERATE 2000 TICKETS
+# =====================================================
 
 for i in range(2000):
 
@@ -117,9 +140,9 @@ for i in range(2000):
         status
     ])
 
-# -----------------------------------------------------
-# Create DataFrame
-# -----------------------------------------------------
+# =====================================================
+# CREATE DATAFRAME
+# =====================================================
 
 df = pd.DataFrame(
     tickets,
@@ -135,9 +158,9 @@ df = pd.DataFrame(
     ]
 )
 
-# -----------------------------------------------------
-# Save CSV
-# -----------------------------------------------------
+# =====================================================
+# SAVE CSV
+# =====================================================
 
 df.to_csv(
     "tickets.csv",
