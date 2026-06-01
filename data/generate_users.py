@@ -71,8 +71,7 @@ df = pd.DataFrame(
     columns=[
         "name",
         "email",
-        "role",
-        "department"
+        "role"
     ]
 )
 
